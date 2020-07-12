@@ -1,37 +1,5 @@
 Redis Cache in .net Core
 
-Redis is a tip top flowed store. It's phenomenal for taking care of data that you will 
-require again and again in a brief time allotment when you would favor not to use dealing with ability
- to "make" that data yet again. Think figuring or generous SQL request for data that doesn't change normally.
-
-The primary thing you have to do is include the Redis reserving bundle given by Microsoft. 
-You can do this in your bundle director reassure by running :
-In your startup.cs, you now need to add the following to your ConfigureServices method.
- It should look something like :
-
- Microsoft.Extensions.Caching.Redis
-
-public void ConfigureServices(IServiceCollection services)
-{
- services.AddMvc();
- 
- services.AddDistributedRedisCache(option =>
- {
- option.Configuration = "127.0.0.1";
- option.InstanceName = "master";
- });
-}
-
-For your Configuration, while I've hardcoded this to 127.0.0.1, you can clearly change this to pull from your arrangement as required.
- Either from AppSettings/ConnectionStrings and so on. 
-
-What's more, as you can presumably figure with the technique mark of "AddDistributedRedisCache", 
-you can likewise utilize things like SQL or InMemory reserves utilizing a comparable kind of strategy. We will go over this in future posts! 
-
-AddDistributedRedisCache really adds an interface amazingly to your administration accumulation called
- "IDistributedCache" that you would then be able to use to set and recover values. 
-You would then be able to utilize controller reliance infusion to go anyplace in your application.
- So state we have a controller called HomeController and it needs to utilize the RedisCache. It would go :
 
 // Set cache 
  [HttpGet]
